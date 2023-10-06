@@ -3,7 +3,7 @@
 
 // const prisma = new PrismaClient();
 
-// export const makeComment = async(req : Request , res : Response) => {
+// export const createComment = async(req : Request , res : Response) => {
 //     try {
 //         const { userID , postID } = req.params
 //         const { comment } = req.body;
