@@ -76,7 +76,7 @@ export const resetPassword = async (user : any, tokenID : string)=>{
             url : `${url}/${tokenID}/verify`
         }
 
-        const data = path.join(__dirname, "../views/verifyAccount.ejs")
+        const data = path.join(__dirname, "../views/resetPassword.ejs")
 
         const realData = await ejs.renderFile(data, userDetails)
 
