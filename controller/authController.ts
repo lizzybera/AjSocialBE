@@ -2,12 +2,12 @@ import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 import crypto from "crypto";
 import { HTTP } from "../Error/mainError";
-// import { streamUpload } from "../utils/streamUpload";
+import { streamUpload } from "../utils/upload";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-// import { sendMail, resetPassword } from "../utils/emails";
+import { verifyAccount } from "../utils/emails";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -28,9 +28,9 @@ export const register = async (req: Request, res: Response) => {
     });
 
     const tokenID = jwt.sign({ id: user?.id }, "secret");
-    // sendMail(user, tokenID).then(()=>{
-    //   console.log("sent");
-    // })
+    verifyAccount(user, tokenID).then(()=>{
+      console.log("sent");
+    })
 
     return res.status(HTTP.CREATED).json({
       message: "user created Successfully",
@@ -159,14 +159,14 @@ export const updateUserAvatar = async (req: any, res: Response) => {
         }
     })
 
-    // const { secure_url, public_id }: any = await streamUpload(req);
+    const { secure_url, public_id }: any = await streamUpload(req);
 
 
     const user = await prisma.authModel.update({
       where: { id: userID?.id },
       data: {
-        // image: secure_url,
-        // imageID: public_id,
+        image: secure_url,
+        imageID: public_id,
       },
     });
 
