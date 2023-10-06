@@ -5,7 +5,7 @@ import { HTTP } from "../Error/mainError";
 import { streamUpload } from "../utils/upload";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { verifyAccount } from "../utils/emails";
+import { resetPassword, verifyAccount } from "../utils/emails";
 
 const prisma = new PrismaClient()
 
@@ -194,7 +194,7 @@ export const forgotPassword = async (req: any, res: Response) => {
       const token = jwt.sign({ id: user?.id }, "secret");
 
       const tokenID : string = token
-    //   resetPassword(user, tokenID)
+      resetPassword(user, tokenID)
 
       const verify = await prisma.authModel.update({
         where: { id: user?.id },
