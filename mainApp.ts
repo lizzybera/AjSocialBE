@@ -2,7 +2,7 @@ import cors from "cors";
 import express, { Application, NextFunction, Request, Response } from "express";
 import { errHandler } from "./Error/errorHandler";
 import { HTTP, mainError } from "./Error/mainError";
-// import auth from "./router/authRouter"
+import auth from "./router/authRouter"
 // import post from "./router/postRouter"
 import morgan from "morgan";
 import helmet from "helmet";
@@ -21,7 +21,7 @@ export const mainApp = (app: Application) => {
 
   app.set("view engine", "ejs")
   
-  // app.use("/api", auth)
+  app.use("/api", auth)
   // app.use("/api", post)
 
   app.get("/", (req: Request, res: Response) => {
