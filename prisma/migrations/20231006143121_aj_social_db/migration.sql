@@ -1,13 +1,13 @@
 -- CreateTable
 CREATE TABLE "authModel" (
-    "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
-    "image" TEXT,
-    "imageID" TEXT,
-    "token" TEXT NOT NULL,
-    "verified" BOOLEAN NOT NULL DEFAULT false,
+    "id" STRING NOT NULL,
+    "name" STRING NOT NULL,
+    "email" STRING NOT NULL,
+    "password" STRING NOT NULL,
+    "image" STRING,
+    "imageID" STRING,
+    "token" STRING NOT NULL,
+    "verified" BOOL NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "authModel_pkey" PRIMARY KEY ("id")
@@ -15,11 +15,11 @@ CREATE TABLE "authModel" (
 
 -- CreateTable
 CREATE TABLE "postModel" (
-    "id" TEXT NOT NULL,
-    "message" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
-    "imageID" TEXT NOT NULL,
-    "userID" TEXT NOT NULL,
+    "id" STRING NOT NULL,
+    "message" STRING NOT NULL,
+    "image" STRING NOT NULL,
+    "imageID" STRING NOT NULL,
+    "userID" STRING NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "postModel_pkey" PRIMARY KEY ("id")
@@ -27,9 +27,9 @@ CREATE TABLE "postModel" (
 
 -- CreateTable
 CREATE TABLE "commentModel" (
-    "id" TEXT NOT NULL,
-    "comment" TEXT NOT NULL,
-    "postID" TEXT NOT NULL,
+    "id" STRING NOT NULL,
+    "comment" STRING NOT NULL,
+    "postID" STRING NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "commentModel_pkey" PRIMARY KEY ("id")
@@ -37,9 +37,9 @@ CREATE TABLE "commentModel" (
 
 -- CreateTable
 CREATE TABLE "replyModel" (
-    "id" TEXT NOT NULL,
-    "reply" TEXT NOT NULL,
-    "commentID" TEXT NOT NULL,
+    "id" STRING NOT NULL,
+    "reply" STRING NOT NULL,
+    "commentID" STRING NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "replyModel_pkey" PRIMARY KEY ("id")
