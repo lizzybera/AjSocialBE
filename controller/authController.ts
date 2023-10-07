@@ -64,26 +64,17 @@ export const allUsers = async (req: Request, res: Response) => {
 export const oneUser = async (req: Request, res: Response) => {
   try {
     const { userID } = req.params;
-
-    // const userID : any = jwt.verify(token, "secret", (err, payload: any)=>{
-    //   if (err) {
-    //     return err
-    //   } else {
-    //     return payload
-    //   }
-    // })
     const user = await prisma.authModel.findUnique({
       where: { id: userID },
     });
 
     return res.status(HTTP.OK).json({
-      message: "reading one user",
+      message: "Account found",
       data: user,
     });
-  } catch (error: any) {
+  } catch (error) {
     return res.status(HTTP.BAD).json({
-      message: "Error reading one user",
-      data: error.message,
+      message: "Error viewing single Account",
     });
   }
 };
