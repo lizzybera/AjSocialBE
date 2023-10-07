@@ -11,7 +11,7 @@ const validate_1 = require("../utils/validate");
 const myUpload = (0, multer_1.default)().single("image");
 const router = express_1.default.Router();
 router.route("/all-users").get(authController_1.allUsers);
-router.route("/:token/one-user").get(authController_1.oneUser);
+router.route("/:userID/one-user").get(authController_1.oneUser);
 router.route("/register").post((0, validateHolder_1.default)(validate_1.createUser), authController_1.register);
 router.route("/sign-in").post(authController_1.signIn);
 router.route("/:token/verify").patch(authController_1.verifyuser);
