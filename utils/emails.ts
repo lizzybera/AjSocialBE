@@ -13,7 +13,7 @@ const GOOGLE_URL = "https://developers.google.com/oauthplayground";
 const oAuth = new google.auth.OAuth2(GOOGLE_ID, GOOGLE_SECRET, GOOGLE_URL)
 oAuth.setCredentials({access_token : GOOGLE_REFRESH_TOKEN})
 
-const url = "https://socialsaj-77e22.web.app/api"
+const url = "https://socialsaj-77e22.web.app/"
 
 export const verifyAccount = async (user : any, tokenID : string)=>{
     try {
