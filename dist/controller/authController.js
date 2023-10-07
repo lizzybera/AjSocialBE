@@ -71,27 +71,18 @@ const allUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.allUsers = allUsers;
 const oneUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { token } = req.params;
-        const userID = jsonwebtoken_1.default.verify(token, "secret", (err, payload) => {
-            if (err) {
-                return err;
-            }
-            else {
-                return payload;
-            }
-        });
+        const { userID } = req.params;
         const user = yield prisma.authModel.findUnique({
-            where: { id: userID === null || userID === void 0 ? void 0 : userID.id },
+            where: { id: userID },
         });
         return res.status(mainError_1.HTTP.OK).json({
-            message: "reading one user",
+            message: "Account found",
             data: user,
         });
     }
     catch (error) {
         return res.status(mainError_1.HTTP.BAD).json({
-            message: "Error reading one user",
-            data: error.message,
+            message: "Error viewing single Account",
         });
     }
 });
