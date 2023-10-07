@@ -13,7 +13,7 @@ const GOOGLE_URL = "https://developers.google.com/oauthplayground";
 const oAuth = new google.auth.OAuth2(GOOGLE_ID, GOOGLE_SECRET, GOOGLE_URL)
 oAuth.setCredentials({access_token : GOOGLE_REFRESH_TOKEN})
 
-const url = "http://localhost:1234/api"
+const url = "https://socialsaj-77e22.web.app/api"
 
 export const verifyAccount = async (user : any, tokenID : string)=>{
     try {
@@ -33,7 +33,7 @@ export const verifyAccount = async (user : any, tokenID : string)=>{
 
         const userDetails = {
             name : user.name,
-            url : `${url}/${tokenID}/verify`
+            url : `${url}/${tokenID}/sign-in`
         }
 
         const data = path.join(__dirname, "../views/verifyAccount.ejs")
@@ -73,7 +73,7 @@ export const resetPassword = async (user : any, tokenID : string)=>{
 
         const userDetails = {
             name : user.name,
-            url : `${url}/${tokenID}/verify`
+            url : `${url}/${tokenID}/change`
         }
 
         const data = path.join(__dirname, "../views/resetPassword.ejs")
