@@ -63,17 +63,17 @@ export const allUsers = async (req: Request, res: Response) => {
 
 export const oneUser = async (req: Request, res: Response) => {
   try {
-    const { token } = req.params;
+    const { userID } = req.params;
 
-    const userID : any = jwt.verify(token, "secret", (err, payload: any)=>{
-      if (err) {
-        return err
-      } else {
-        return payload
-      }
-    })
+    // const userID : any = jwt.verify(token, "secret", (err, payload: any)=>{
+    //   if (err) {
+    //     return err
+    //   } else {
+    //     return payload
+    //   }
+    // })
     const user = await prisma.authModel.findUnique({
-      where: { id: userID?.id },
+      where: { id: userID },
     });
 
     return res.status(HTTP.OK).json({

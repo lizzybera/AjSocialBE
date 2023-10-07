@@ -10,7 +10,7 @@ const myUpload = multer().single("image")
 const router = express.Router()
 
 router.route("/all-users").get(allUsers)
-router.route("/:token/one-user").get(oneUser)
+router.route("/:userID/one-user").get(oneUser)
 
 router.route("/register").post(validateHolder(createUser), register)
 router.route("/sign-in").post(signIn)
