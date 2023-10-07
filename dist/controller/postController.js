@@ -51,22 +51,21 @@ const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.createPost = createPost;
 const allPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { userID } = req.params;
-        const user = yield prisma.authModel.findUnique({
-            where: { id: userID }
+        // const {userID} = req.params
+        // const user = await prisma.authModel.findUnique({
+        // where : {id : userID}
+        // })
+        // if (user) {
+        const post = yield prisma.postModel.findMany({});
+        return res.status(mainError_1.HTTP.OK).json({
+            message: "Posts viewed successfully",
+            data: post
         });
-        if (user) {
-            const post = yield prisma.postModel.findMany({});
-            return res.status(mainError_1.HTTP.OK).json({
-                message: "Posts viewed successfully",
-                data: post
-            });
-        }
-        else {
-            return res.status(mainError_1.HTTP.BAD).json({
-                message: "User Not Found"
-            });
-        }
+        // } else {
+        //     return res.status(HTTP.BAD).json({
+        //         message : "User Not Found"
+        //     })
+        // }
     }
     catch (error) {
         return res.status(mainError_1.HTTP.BAD).json({
