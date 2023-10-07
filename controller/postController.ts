@@ -48,13 +48,13 @@ export const createPost = async(req : any, res : Response) =>{
 
 export const allPosts = async(req : any, res : Response) =>{
     try {
-        const {userID} = req.params
+        // const {userID} = req.params
 
-        const user = await prisma.authModel.findUnique({
-        where : {id : userID}
-        })
+        // const user = await prisma.authModel.findUnique({
+        // where : {id : userID}
+        // })
 
-        if (user) {
+        // if (user) {
             const post = await prisma.postModel.findMany({})
 
             
@@ -63,12 +63,12 @@ export const allPosts = async(req : any, res : Response) =>{
                 data : post
             })
 
-        } else {
-            return res.status(HTTP.BAD).json({
-                message : "User Not Found"
-            })
+        // } else {
+        //     return res.status(HTTP.BAD).json({
+        //         message : "User Not Found"
+        //     })
             
-        }
+        // }
 
     } catch (error : any) {
         return res.status(HTTP.BAD).json({

@@ -7,7 +7,7 @@ const myUpload = multer().single("image")
 
 const router = express.Router()
 
-router.route("/:userID/all-posts").get(allPosts)
+router.route("/all-posts").get(allPosts)
 router.route("/:userID/:postID/one-post").get(onePost)
 
 router.route("/:userID/post").post(myUpload,createPost)
