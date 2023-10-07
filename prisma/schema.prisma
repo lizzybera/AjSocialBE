@@ -49,6 +49,8 @@ model commentModel {
 
   comment String
 
+  userID String
+
   postID String
   post postModel @relation(fields: [postID], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
@@ -61,6 +63,8 @@ model replyModel {
   id String @id @default(uuid())
 
   reply String
+
+  userID String
 
   commentID String
   comment commentModel @relation(fields: [commentID], references: [id], onDelete: Cascade, onUpdate: Cascade)
