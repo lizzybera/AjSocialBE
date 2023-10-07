@@ -9,7 +9,7 @@ const express_1 = __importDefault(require("express"));
 const errorHandler_1 = require("./Error/errorHandler");
 const mainError_1 = require("./Error/mainError");
 const authRouter_1 = __importDefault(require("./router/authRouter"));
-// import post from "./router/postRouter"
+const postRouter_1 = __importDefault(require("./router/postRouter"));
 const morgan_1 = __importDefault(require("morgan"));
 const helmet_1 = __importDefault(require("helmet"));
 const mainApp = (app) => {
@@ -22,7 +22,7 @@ const mainApp = (app) => {
     app.use((0, helmet_1.default)());
     app.set("view engine", "ejs");
     app.use("/api", authRouter_1.default);
-    // app.use("/api", post)
+    app.use("/api", postRouter_1.default);
     app.get("/", (req, res) => {
         try {
             return res.status(200).json({
